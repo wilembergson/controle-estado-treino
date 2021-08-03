@@ -32,6 +32,10 @@ export default function Todo(){
             })
     }
 
+    function handleClear(){
+        refresh()
+    }
+
     function handleRemove(id){
         axios.delete(`${URL}/${id}`)
             .then(resp => refresh())
@@ -49,8 +53,15 @@ export default function Todo(){
 
     return(
         <div>
+            {/*{refresh()}*/}
             <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
-            <TodoForm handleAdd={handleAdd} description={description} handleChange={handleChange}/>
+            
+            <TodoForm handleAdd={handleAdd}
+                        description={description}
+                        handleChange={handleChange}
+                        handleShow={refresh}
+                        handleClear={handleClear}/>
+
             <TodoList list={list}
                         handleRemove={handleRemove}
                         handleMarkAsDone={handleMarkAsDone}

@@ -2,7 +2,6 @@ package com.example.TodoApp.controller;
 
 import com.example.TodoApp.entity.Task;
 import com.example.TodoApp.service.TaskService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +24,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> save(@RequestBody Task task){
+    public ResponseEntity<Task> save(@RequestBody Task task) throws Exception {
         return ResponseEntity.ok(service.save(task));
     }
 

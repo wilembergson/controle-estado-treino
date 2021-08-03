@@ -17,7 +17,10 @@ public class TaskService {
         this.repository = repository;
     }
 
-    public Task save(Task task){
+    public Task save(Task task) throws Exception {
+        if(task.getDescription() == ""){
+            throw new Exception();
+        }
         return repository.save(task);
     }
 
